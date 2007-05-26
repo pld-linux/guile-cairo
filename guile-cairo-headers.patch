@@ -1,0 +1,14 @@
+--- guile-cairo-1.3.90/guile-cairo/guile-cairo.h.orig	2007-05-18 18:52:45.000000000 +0200
++++ guile-cairo-1.3.90/guile-cairo/guile-cairo.h	2007-05-26 16:18:57.316432227 +0200
+@@ -24,6 +24,11 @@
+ #ifndef __GUILE_CAIRO_H__
+ #define __GUILE_CAIRO_H__
+ 
++#include <cairo.h>
++#if CAIRO_HAS_SVG_SURFACE
++#include <cairo-svg.h>
++#endif
++
+ #include <guile-cairo-smob-types.h>
+ #include <guile-cairo-enum-types.h>
+ #include <guile-cairo-vector-types.h>
