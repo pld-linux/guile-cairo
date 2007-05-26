@@ -7,6 +7,7 @@ License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://download.gna.org/guile-cairo/%{name}-%{version}.tar.gz
 # Source0-md5:	4dcb497d0e291e0cb9ca5fa09a1f1834
+Patch0:		%{name}-headers.patch
 URL:		http://home.gna.org/guile-cairo/
 BuildRequires:	cairo-devel >= 1.4.0
 BuildRequires:	guile-devel >= 5:1.6.4
@@ -37,6 +38,7 @@ Pliki nagłówkowe biblioteki guile-cairo.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure
