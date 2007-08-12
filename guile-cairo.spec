@@ -1,17 +1,19 @@
 Summary:	Cairo graphics library wrapper for Guile Scheme
 Summary(pl.UTF-8):	Wrapper biblioteki graficznej Cairo dla Guile Scheme
 Name:		guile-cairo
-Version:	1.3.92
+Version:	1.4.0
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://download.gna.org/guile-cairo/%{name}-%{version}.tar.gz
-# Source0-md5:	0e8734e6605ef2a941891b4d04573d01
+# Source0-md5:	196c2800f9816afeca82b1ca7619df63
 Patch0:		%{name}-headers.patch
+Patch1:		%{name}-info.patch
 URL:		http://home.gna.org/guile-cairo/
 BuildRequires:	cairo-devel >= 1.4.0
 BuildRequires:	guile-devel >= 5:1.6.4
 BuildRequires:	pkgconfig >= 1:0.9.0
+BuildRequires:	texinfo
 Requires:	cairo >= 1.4.0
 Requires:	guile >= 5:1.6.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -39,6 +41,7 @@ Pliki nagłówkowe biblioteki guile-cairo.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %configure
@@ -56,6 +59,12 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
+%post devel
+[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir %{_infodir} >/dev/null 2>&1
+
+%postun devel
+[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir %{_infodir} >/dev/null 2>&1
+
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO
@@ -69,3 +78,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libguile-cairo.la
 %{_includedir}/guile-cairo
 %{_pkgconfigdir}/guile-cairo.pc
+%{_infodir}/guile-cairo.info*
