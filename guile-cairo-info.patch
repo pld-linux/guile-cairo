@@ -1,0 +1,14 @@
+--- guile-cairo-1.4.0/doc/guile-cairo.texi.orig	2007-07-17 18:41:47.000000000 +0200
++++ guile-cairo-1.4.0/doc/guile-cairo.texi	2007-08-12 18:27:35.620598783 +0200
+@@ -21,9 +21,9 @@
+ 
+ @end copying
+ 
+-@dircategory The Algorithmic Language Scheme
++@dircategory Programming Languages:
+ @direntry 
+-* Guile-Cairo: (guile-cairo.info).  Scheme vector graphics with Cairo.
++* Guile-Cairo: (guile-cairo.info).	Scheme vector graphics with Cairo
+ @end direntry
+ 
+ @titlepage 
