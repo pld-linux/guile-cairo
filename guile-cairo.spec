@@ -69,6 +69,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_libdir}/libguile-cairo.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libguile-cairo.so.0
 %{_datadir}/guile/site/cairo.scm
 %{_datadir}/guile/site/cairo
 
