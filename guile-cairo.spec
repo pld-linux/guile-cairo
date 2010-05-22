@@ -18,6 +18,8 @@ Requires:	cairo >= 1.4.0
 Requires:	guile >= 5:1.6.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%undefine	__cxx
+
 %description
 Guile-Cairo wraps the Cairo graphics library for Guile Scheme.
 
