@@ -10,15 +10,16 @@ Source0:	http://download.gna.org/guile-cairo/%{name}-%{version}.tar.gz
 Patch0:		%{name}-headers.patch
 Patch1:		%{name}-info.patch
 URL:		http://home.gna.org/guile-cairo/
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	cairo-devel >= 1.4.0
 BuildRequires:	guile-devel >= 5:1.6.4
+BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	texinfo
 Requires:	cairo >= 1.4.0
 Requires:	guile >= 5:1.6.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%undefine	__cxx
 
 %description
 Guile-Cairo wraps the Cairo graphics library for Guile Scheme.
@@ -46,8 +47,13 @@ Pliki nagłówkowe biblioteki guile-cairo.
 %patch1 -p1
 
 %build
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__automake}
 %configure
-%{__make}
+%{__make} \
+	DEBUG_CFLAGS="-I%{_includedir}/cairo"
 
 %install
 rm -rf $RPM_BUILD_ROOT
