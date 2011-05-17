@@ -1,16 +1,16 @@
 Summary:	Cairo graphics library wrapper for Guile Scheme
 Summary(pl.UTF-8):	Wrapper biblioteki graficznej Cairo dla Guile Scheme
 Name:		guile-cairo
-Version:	1.4.0
-Release:	4
-License:	LGPL v2.1+
+Version:	1.4.1
+Release:	1
+License:	LGPL v3+
 Group:		Libraries
 Source0:	http://download.gna.org/guile-cairo/%{name}-%{version}.tar.gz
-# Source0-md5:	196c2800f9816afeca82b1ca7619df63
+# Source0-md5:	70c6d977e7fdffb2c717eb9bff04eec1
 Patch0:		%{name}-headers.patch
 Patch1:		%{name}-info.patch
 URL:		http://home.gna.org/guile-cairo/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	cairo-devel >= 1.4.0
 BuildRequires:	guile-devel >= 5:1.6.4
