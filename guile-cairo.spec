@@ -1,24 +1,24 @@
 Summary:	Cairo graphics library wrapper for Guile Scheme
 Summary(pl.UTF-8):	Wrapper biblioteki graficznej Cairo dla Guile Scheme
 Name:		guile-cairo
-Version:	1.9.90
+Version:	1.9.91
 Release:	1
 License:	LGPL v3+
 Group:		Libraries
-Source0:	http://download.gna.org/guile-cairo/%{name}-%{version}.tar.gz
-# Source0-md5:	e0623b9729691b04b410879be5156dfc
+Source0:	http://download.savannah.gnu.org/releases/guile-cairo/%{name}-%{version}.tar.gz
+# Source0-md5:	bc8f4f00d1d351f85e0235636a113ad6
 Patch0:		%{name}-headers.patch
 Patch1:		%{name}-info.patch
-URL:		http://home.gna.org/guile-cairo/
+URL:		http://www.nongnu.org/guile-cairo/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	cairo-devel >= 1.4.0
-BuildRequires:	guile-devel >= 5:1.6.4
+BuildRequires:	guile-devel >= 5:1.8
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	texinfo
 Requires:	cairo >= 1.4.0
-Requires:	guile >= 5:1.6.4
+Requires:	guile >= 5:1.8
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -60,6 +60,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} -j1 install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libguile-cairo.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
