@@ -5,11 +5,12 @@ Version:	1.4.1
 Release:	7
 License:	LGPL v3+
 Group:		Libraries
+# future releases: http://download.savannah.gnu.org/releases/guile-cairo/
 Source0:	http://download.gna.org/guile-cairo/%{name}-%{version}.tar.gz
 # Source0-md5:	70c6d977e7fdffb2c717eb9bff04eec1
 Patch0:		%{name}-headers.patch
 Patch1:		%{name}-info.patch
-URL:		http://home.gna.org/guile-cairo/
+URL:		http://www.nongnu.org/guile-cairo/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	cairo-devel >= 1.4.0
