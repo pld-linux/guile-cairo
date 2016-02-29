@@ -2,7 +2,7 @@ Summary:	Cairo graphics library wrapper for Guile Scheme
 Summary(pl.UTF-8):	Wrapper biblioteki graficznej Cairo dla Guile Scheme
 Name:		guile-cairo
 Version:	1.4.1
-Release:	7
+Release:	8
 License:	LGPL v3+
 Group:		Libraries
 # future releases: http://download.savannah.gnu.org/releases/guile-cairo/
