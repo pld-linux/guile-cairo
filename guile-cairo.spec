@@ -1,13 +1,12 @@
 Summary:	Cairo graphics library wrapper for Guile Scheme
 Summary(pl.UTF-8):	Wrapper biblioteki graficznej Cairo dla Guile Scheme
 Name:		guile-cairo
-Version:	1.4.1
-Release:	9
+Version:	1.10.0
+Release:	1
 License:	LGPL v3+
 Group:		Libraries
-# future releases: http://download.savannah.gnu.org/releases/guile-cairo/
-Source0:	http://download.gna.org/guile-cairo/%{name}-%{version}.tar.gz
-# Source0-md5:	70c6d977e7fdffb2c717eb9bff04eec1
+Source0:	http://download.savannah.gnu.org/releases/guile-cairo/%{name}-%{version}.tar.gz
+# Source0-md5:	03417b370a822c3e0be0795930f7878f
 Patch0:		%{name}-headers.patch
 Patch1:		%{name}-info.patch
 URL:		http://www.nongnu.org/guile-cairo/
@@ -48,10 +47,6 @@ Pliki nagłówkowe biblioteki guile-cairo.
 %patch1 -p1
 
 %build
-%{__libtoolize}
-%{__aclocal}
-%{__autoconf}
-%{__automake}
 %configure
 %{__make} \
 	DEBUG_CFLAGS="-I%{_includedir}/cairo"
