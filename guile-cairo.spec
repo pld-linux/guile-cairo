@@ -2,7 +2,7 @@ Summary:	Cairo graphics library wrapper for Guile Scheme
 Summary(pl.UTF-8):	Wrapper biblioteki graficznej Cairo dla Guile Scheme
 Name:		guile-cairo
 Version:	1.10.0
-Release:	2
+Release:	3
 License:	LGPL v3+
 Group:		Libraries
 Source0:	http://download.savannah.gnu.org/releases/guile-cairo/%{name}-%{version}.tar.gz
@@ -11,14 +11,14 @@ Patch0:		%{name}-headers.patch
 Patch1:		%{name}-info.patch
 URL:		http://www.nongnu.org/guile-cairo/
 BuildRequires:	autoconf >= 2.52
-BuildRequires:	automake
-BuildRequires:	cairo-devel >= 1.4.0
-BuildRequires:	guile-devel >= 5:1.6.4
-BuildRequires:	libtool
+BuildRequires:	automake >= 1:1.14
+BuildRequires:	cairo-devel >= 1.10.0
+BuildRequires:	guile-devel >= 5:1.8
+BuildRequires:	libtool >= 2:2
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	texinfo
-Requires:	cairo >= 1.4.0
-Requires:	guile >= 5:1.6.4
+Requires:	cairo >= 1.10.0
+Requires:	guile >= 5:1.8
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -32,8 +32,8 @@ Summary:	Header files for guile-cairo library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki guile-cairo
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	cairo-devel >= 1.4.0
-Requires:	guile-devel >= 5:1.6.4
+Requires:	cairo-devel >= 1.10.0
+Requires:	guile-devel >= 5:1.8
 
 %description devel
 Header files for guile-cairo library.
@@ -47,7 +47,9 @@ Pliki nagłówkowe biblioteki guile-cairo.
 %patch1 -p1
 
 %build
-%configure
+%configure \
+	--disable-silent-rules
+
 %{__make} \
 	DEBUG_CFLAGS="-I%{_includedir}/cairo"
 
@@ -56,6 +58,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} -j1 install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libguile-cairo.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -80,7 +85,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libguile-cairo.so
-%{_libdir}/libguile-cairo.la
 %{_includedir}/guile-cairo
 %{_pkgconfigdir}/guile-cairo.pc
 %{_infodir}/guile-cairo.info*
