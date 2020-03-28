@@ -2,7 +2,7 @@ Summary:	Cairo graphics library wrapper for Guile Scheme
 Summary(pl.UTF-8):	Wrapper biblioteki graficznej Cairo dla Guile Scheme
 Name:		guile-cairo
 Version:	1.10.0
-Release:	3
+Release:	4
 License:	LGPL v3+
 Group:		Libraries
 Source0:	http://download.savannah.gnu.org/releases/guile-cairo/%{name}-%{version}.tar.gz
@@ -16,6 +16,7 @@ BuildRequires:	cairo-devel >= 1.10.0
 BuildRequires:	guile-devel >= 5:1.8
 BuildRequires:	libtool >= 2:2
 BuildRequires:	pkgconfig >= 1:0.9.0
+BuildRequires:	sed >= 4.0
 BuildRequires:	texinfo
 Requires:	cairo >= 1.10.0
 Requires:	guile >= 5:1.8
@@ -46,7 +47,15 @@ Pliki nagłówkowe biblioteki guile-cairo.
 %patch0 -p1
 %patch1 -p1
 
+# script not included, just store version
+%{__sed} -i -e '/git-version-gen/ s/m4_esyscmd.*,$/[%{version}],/' configure.ac
+
 %build
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
 	--disable-silent-rules
 
