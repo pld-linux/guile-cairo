@@ -2,7 +2,7 @@ Summary:	Cairo graphics library wrapper for Guile Scheme
 Summary(pl.UTF-8):	Wrapper biblioteki graficznej Cairo dla Guile Scheme
 Name:		guile-cairo
 Version:	1.10.0
-Release:	4
+Release:	5
 License:	LGPL v3+
 Group:		Libraries
 Source0:	http://download.savannah.gnu.org/releases/guile-cairo/%{name}-%{version}.tar.gz
@@ -57,7 +57,8 @@ Pliki nagłówkowe biblioteki guile-cairo.
 %{__autoheader}
 %{__automake}
 %configure \
-	--disable-silent-rules
+	--disable-silent-rules \
+	--disable-Werror
 
 %{__make} \
 	DEBUG_CFLAGS="-I%{_includedir}/cairo"
