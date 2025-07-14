@@ -44,8 +44,8 @@ Pliki nagłówkowe biblioteki guile-cairo.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+%patch -P0 -p1
+%patch -P1 -p1
 
 # script not included, just store version
 %{__sed} -i -e '/git-version-gen/ s/m4_esyscmd.*,$/[%{version}],/' configure.ac
